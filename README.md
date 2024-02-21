@@ -39,8 +39,9 @@ For the prediction there are again two Jupyter Notebooks [predict_resnet.ipynb](
 
 There is also a Jupyter Notebook [compare_two_models.ipynb](compare_two_models.ipynb) which gives side by side comparison of the U-Net and ResNet on the same images. The comparison is shown in Fig. 1.
 
-![Fig. 1. ResNet34 vs U-Net comparision. Columns: 1 - input image, 2 - depth ground truth, 3 - ResNet34 model prediction, 4 - U-Net model prediction.](./docs/resnet_vs_unet.png)
-*Fig. 1. ResNet34 vs U-Net comparision. Columns: 1 - input image, 2 - depth ground truth, 3 - ResNet34 model prediction, 4 - U-Net model prediction.*
+| ![Fig. 1. ResNet34 vs U-Net comparision. Columns: 1 - input image, 2 - depth ground truth, 3 - ResNet34 model prediction, 4 - U-Net model prediction.](./docs/resnet_vs_unet.png)
+| -
+| **Fig. 1.** ResNet34 vs U-Net comparision. Columns: 1 - input image, 2 - depth ground truth, 3 - ResNet34 model prediction, 4 - U-Net model prediction.
 
 ## Experiments with Real World Outdoor Images
 
@@ -48,23 +49,27 @@ The next goal was to try a simple test with a real images. The required outdoor 
 
 The first experiment was with the trained ResNet34 model. The ResNet34 was trained on an indoor dataset but still can achieve good results when predicts depth of an outdoor scenes as it can be seen in Fig. 2. Good predictions are achieved when the illumination is uniform and there are no shadows or light reflections.
 
-![Fig. 2. ResNet34 predictions of normal images. Columns: 1 - input image, 2 - ResNet34 model prediction.](./docs/resnet34_normal_photos_predictions.png)
-*Fig. 2. ResNet34 predictions of normal images. Columns: 1 - input image, 2 - ResNet34 model prediction.*
+| ![Fig. 2. ResNet34 predictions of normal images. Columns: 1 - input image, 2 - ResNet34 model prediction.](./docs/resnet34_normal_photos_predictions.png)
+| -
+| **Fig. 2.** ResNet34 predictions of normal images. Columns: 1 - input image, 2 - ResNet34 model prediction.
 
 However, when images with a lot of shadows of non-uniform light are predicted by the model, it can bbe seen that the depth information is not predicted correctly as shown in Fig. 3. The depth in the tunnel image is wrongly estimated due to a reflection on the windshield of the car. The depth outside of the tunnel is wrongly estimated due the the big shadow of the truck.
 
-![Fig. 3. ResNet34 predictions of images with shadows and reflections. Columns: 1 - input image, 2 - ResNet34 model prediction.](./docs/resnet34_difficult_photos_predictions.png)
-*Fig. 3. ResNet34 predictions of images with shadows and reflections. Columns: 1 - input image, 2 - ResNet34 model prediction.*
+| ![Fig. 3. ResNet34 predictions of images with shadows and reflections. Columns: 1 - input image, 2 - ResNet34 model prediction.](./docs/resnet34_difficult_photos_predictions.png)
+| -
+| **Fig. 3.** ResNet34 predictions of images with shadows and reflections. Columns: 1 - input image, 2 - ResNet34 model prediction.
 
 The second experiment was with the U-Net model trained on the same NYU Depth V2 dataset. The results from the single image depth estimation are shown in Fig. 4.
 
-![Fig. 4. U-Net predictions of normal images. Columns: 1 - input image, 2 - U-Net model prediction.](./docs/unet_normal_photos_predictions.png)
-*Fig. 4. U-Net predictions of normal images. Columns: 1 - input image, 2 - U-Net model prediction.*
+| ![Fig. 4. U-Net predictions of normal images. Columns: 1 - input image, 2 - U-Net model prediction.](./docs/unet_normal_photos_predictions.png)
+| -
+| **Fig. 4.** U-Net predictions of normal images. Columns: 1 - input image, 2 - U-Net model prediction.
 
 The U-Net model has a minor advantage over the ResNet when the tunnel image is considered. However, when the depth of the image with the shadow on road is estimated with U-Net the results are comparable or even worse than the estimations of the ResNet as shown in Fig. 5.
 
-![Fig. 5. U-Net predictions of images with shadows and reflections. Columns: 1 - input image, 2 - U-Net model prediction.](./docs/unet_difficult_photos_predictions.png)
-*Fig. 5. U-Net predictions of images with shadows and reflections. Columns: 1 - input image, 2 - U-Net model prediction.*
+| ![Fig. 5. U-Net predictions of images with shadows and reflections. Columns: 1 - input image, 2 - U-Net model prediction.](./docs/unet_difficult_photos_predictions.png)
+| -
+| **Fig. 5.** U-Net predictions of images with shadows and reflections. Columns: 1 - input image, 2 - U-Net model prediction.
 
 In conclusion, both approaches are suitable for images with a uniform illumination and with a minor post-processing than can be used for depth estimation of a driving scene. But, if a more general scene is considered, e.g., with light reflections, shadows, etc., there should be done pre-processing of the image or the CNNs must be trained with a different (and/or augmented) dataset.
 
