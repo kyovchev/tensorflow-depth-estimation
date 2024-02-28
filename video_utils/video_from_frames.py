@@ -1,10 +1,13 @@
 import cv2
 import glob
 
-FRAMES_FOLDER = "video_1_cut_object_detection"
+FRAMES_FOLDER = "video_1_cut_kitti_unet_depth_object"
+FRAMES_PER_SECOND = 2
+
+ROOT_FOLDER = "D:/tensorflow-depth-estimation"
 
 frames = []
-for filename in glob.glob(f"./video_utils/videos/{FRAMES_FOLDER}/*.jpg"):
+for filename in glob.glob(f"{ROOT_FOLDER}/video_utils/videos/{FRAMES_FOLDER}/*.jpg"):
     print(filename)
     frame = cv2.imread(filename)
 
@@ -18,8 +21,8 @@ for filename in glob.glob(f"./video_utils/videos/{FRAMES_FOLDER}/*.jpg"):
     frames.append(frame)
 
 h, w, _ = frames[0].shape
-out = cv2.VideoWriter(f"./video_utils/videos/{FRAMES_FOLDER}_out.avi",
-                      cv2.VideoWriter_fourcc(*'DIVX'), 2, (w, h))
+out = cv2.VideoWriter(f"{ROOT_FOLDER}/video_utils/videos/{FRAMES_FOLDER}_out.avi",
+                      cv2.VideoWriter_fourcc(*'DIVX'), FRAMES_PER_SECOND, (w, h))
 
 for i in range(len(frames)):
     out.write(frames[i])
