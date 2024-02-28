@@ -2,6 +2,13 @@
 *.keras
 datasets/*
 !datasets/.gitkeep
+video_utils/videos/*
+!video_utils/videos/.gitkeep
+tmp*
+test*
+depth.png
+Untitled*
+wip*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
