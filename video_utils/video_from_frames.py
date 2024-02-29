@@ -1,8 +1,23 @@
 import cv2
 import glob
 
-FRAMES_FOLDER = "video_1_cut_kitti_unet_depth_object"
-FRAMES_PER_SECOND = 2
+FRAMES_FOLDER = "video_2_cut_depth"
+FRAMES_PER_SECOND = 10
+
+IMAGE_W = 1920
+IMAGE_H = 1080
+WINDOW_W = 928
+WINDOW_H = 696
+
+# for video_1:
+# WINDOW_X = (IMAGE_W - WINDOW_W) // 2
+# WINDOW_Y = 0
+# HEATMAP_Y = 0
+
+# for video_2, video_3 and video_4:
+WINDOW_X = 358
+WINDOW_Y = 234
+HEATMAP_Y = 100
 
 ROOT_FOLDER = "D:/tensorflow-depth-estimation"
 
@@ -12,8 +27,8 @@ for filename in glob.glob(f"{ROOT_FOLDER}/video_utils/videos/{FRAMES_FOLDER}/*.j
     frame = cv2.imread(filename)
 
     # draw the processing target 928x696 rectangle
-    frame = cv2.rectangle(frame, ((1920 - 928) // 2, 0),
-                          ((1920 + 928) // 2, 696), (0, 0, 255), 2)
+    frame = cv2.rectangle(frame, (WINDOW_X, WINDOW_Y), (WINDOW_X + WINDOW_W, WINDOW_Y + WINDOW_H),
+                          (0, 0, 255), 2)
 
     #cv2.imshow("frame", frame)
     #cv2.waitKey(0)
